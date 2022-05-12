@@ -1,0 +1,23 @@
+managed implementation in class ZBP_I_TRAVEL_MARIO unique;
+
+define behavior for ZI_TRAVEL_MARIO alias Travel
+persistent table ztravel_MARIO
+etag master last_changed_at
+lock master
+{
+  field ( readonly, numbering : managed ) mykey;
+  field ( readonly ) travel_id, last_changed_at, last_changed_by, created_at, created_by;
+  field ( mandatory ) agency_id, overall_status, booking_fee, currency_code;
+  create;
+  update;
+  delete;
+  determination CalculateTravelKey on modify { create; }
+
+  // instance action and dynamic action control
+  action ( features : instance ) acceptTravel result [1] $self;
+  // validations
+  validation validateCustomer on save { create; update; }
+  validation validateDates on save { field begin_date, end_date; }
+  validation validateStatus on save { create; update; }
+
+}

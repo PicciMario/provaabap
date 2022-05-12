@@ -1,0 +1,14 @@
+projection;
+
+define behavior for ZC_TRAVEL_MARIO alias TravelProcessor
+use etag
+{
+  // scenario specific field control
+  field ( mandatory ) BeginDate, EndDate, CustomerID;
+
+  use create;
+  use update;
+  use delete;
+
+  use action acceptTravel;
+}
