@@ -10,11 +10,12 @@ CLASS zcl_generate_travel_data_MARIO DEFINITION
 ENDCLASS.
 
 
-
 CLASS ZCL_GENERATE_TRAVEL_DATA_MARIO IMPLEMENTATION.
 
-
   METHOD if_oo_adt_classrun~main.
+
+* prova
+
     DATA:itab TYPE TABLE OF ztravel_MARIO.
 
 *   read current timestamp
